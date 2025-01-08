@@ -1,9 +1,9 @@
 [user]
-	name = Lars Kappert
-	email = lars@webpro.nl
+	name = Gergo Gacs
+	email = gacsgergo@gmail.com
 
 [github]
-	user = webpro
+	user = jstabitunlikely
 
 [core]
 	excludesfile = ~/.config/git/ignore
