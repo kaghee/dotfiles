@@ -2,6 +2,7 @@ tap "homebrew/bundle"
 tap "lotyp/homebrew-formulae"
 
 # core/dotfiles
+brew "antidote"                     # Plugin manager for zsh, inspired by antigen and antibody
 brew "bats-core"                    # Bash Automated Testing System
 brew "coreutils"                    # GNU File, Shell, and Text utilities
 brew "duti"                         # Select default apps for documents and URL schemes

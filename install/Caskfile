@@ -8,6 +8,7 @@ cask "google-chrome"                # Web browser
 cask "google-chrome@canary"         # Nightly build for developers
 cask "iterm2"                       # Terminal emulator as alternative to Apple's Terminal app
 cask "maccy"                        # Clipboard manager
+cask "meetingbar"                   # Shows the next meeting in the menu bar
 cask "proton-drive"                 # Secure cloud storage client
 cask "raycast"                      # Control your tools with a few keystrokes
 cask "slack"                        # Team communication and collaboration software
