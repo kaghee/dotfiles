@@ -7,7 +7,7 @@
 
 [core]
 	excludesfile = ~/.config/git/ignore
-	editor = code --wait
+	editor = nano
 	filemode = false
 	trustctime = false
 	autocrlf = input
@@ -46,13 +46,13 @@
 [alias]
 	amend = commit --amend --reuse-message=HEAD
 	br = branch
-	ci = commit
+	ca = commit --amend
+    ci = commit
 	co = checkout
 	contrib = shortlog --summary --numbered
 	d = diff
 	diffstat = "!f() { if [ $# -eq 0 ]; then git show --shortstat HEAD | tail -1; else git show --shortstat $1 | tail -1; fi; }; f"
 	ds = -c delta.side-by-side=true diff
-	fc = "log --max-parents=0 --pretty=format:'%ad' --date=format:'%Y-%m-%d' -n 1"
 	fc = "log --max-parents=0 --pretty=format:'%ad' --date=format:'%Y-%m-%d' -n 1"
 	g = grep --break --heading --line-number
 	home = browse
@@ -62,19 +62,21 @@
 	lm = log --pretty=format:'* %s (%h)'
 	p = push
 	patch = !git --no-pager diff --no-color
-	pf = push --force
-	rh = reset --hard HEAD
+	pf = push --force --force-with-lease
 	ra = rebase --abort
 	rc = rebase --continue
-	s = status
+	rh = reset --hard HEAD
+    ri = rebase -i
 	show-ignored = !git clean -ndX | perl -pe 's/Would remove //'
 	sshort = "!f() { git show --shortstat \"${1:-HEAD}\" | awk \"/files? changed/ { gsub(/,/, \\\"\\\", \\$4); gsub(/,/, \\\"\\\", \\$6); print \\\"\\033[32m+\\\" \\$4 \\\" \\033[31m-\\\" \\$6 \\\"\\033[0m\\\" }\"; }; f"
+	st = status
+    s = st -s
 
 [diff]
 	renames = copies
 	indentHeuristic = true
 	colorMoved = default
-  tool = vscode
+    tool = vscode
 
 [difftool]
 	prompt = false
@@ -86,7 +88,7 @@
 [merge]
 	conflictstyle = diff3
 	defaultToUpstream = true
-  tool = vscode
+    tool = vscode
 
 [mergetool]
 	prompt = false
