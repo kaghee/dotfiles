@@ -1,9 +1,12 @@
 # Shortcuts
 
-alias reload="source ~/.bash_profile"
+alias reload="source ~/.${SHELL_NAME}rc"
+
 alias _="sudo"
 alias g="git"
 alias rr="rm -rf"
+alias x="exit"
+alias s=source
 
 # Default options
 
@@ -66,3 +69,4 @@ alias quit="exit"
 alias week="date +%V"
 alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
 alias grip="grip --browser --pass=$GITHUB_TOKEN"
+alias genv='(){ env | grep -i $1. ;}'

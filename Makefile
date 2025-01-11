@@ -6,6 +6,7 @@ PATH := $(HOMEBREW_PREFIX)/bin:$(DOTFILES_DIR)/bin:$(N_PREFIX)/bin:$(PATH)
 SHELL := env PATH=$(PATH) /bin/bash
 SHELLS := /private/etc/shells
 BIN := $(HOMEBREW_PREFIX)/bin
+MY_SHELL := zsh
 export XDG_CONFIG_HOME = $(HOME)/.config
 export STOW_DIR = $(DOTFILES_DIR)
 export ACCEPT_EULA=Y
@@ -18,7 +19,7 @@ macos: sudo core-macos packages link duti
 
 linux: core-linux link
 
-core-macos: brew bash git npm
+core-macos: brew ${MY_SHELL} git npm
 
 core-linux:
 	apt-get update
@@ -69,6 +70,21 @@ else
 		brew install bash bash-completion@2 pcre && \
 		sudo append $(shell which bash) $(SHELLS) && \
 		chsh -s $(shell which bash); \
+	fi
+endif
+
+zsh: brew
+ifdef GITHUB_ACTION
+	if ! grep -q zsh $(SHELLS); then \
+		brew install zsh && \
+		sudo append $(shell which zsh) $(SHELLS) && \
+		sudo chsh -s $(shell which zsh); \
+	fi
+else
+	if ! grep -q zsh $(SHELLS); then \
+		brew install zsh && \
+		sudo append $(shell which zsh) $(SHELLS) && \
+		chsh -s $(shell which zsh); \
 	fi
 endif
 

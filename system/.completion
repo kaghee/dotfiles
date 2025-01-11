@@ -1,38 +1,44 @@
-BREW_PREFIX=$(brew --prefix)
+autoload -U compinit; compinit
 
-# Bash
+source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
-if is-executable brew; then
-  . "$BREW_PREFIX/share/bash-completion/bash_completion"
-fi
+# REVISIT: zsh completion topic
 
-# Dotfiles
+# BREW_PREFIX=$(brew --prefix)
 
-_dotfiles_completions() {
-  local cur="${COMP_WORDS[COMP_CWORD]}"
-  COMPREPLY=( $(compgen -W 'clean dock duti edit help macos test update' -- $cur ) );
-}
+# # Bash
 
-complete -o default -F _dotfiles_completions dot
+# if is-executable brew; then
+#   . "$BREW_PREFIX/share/bash-completion/bash_completion"
+# fi
 
-# tmux
+# # Dotfiles
 
-if is-executable brew; then
-  . "$BREW_PREFIX/etc/bash_completion.d/tmux"
-fi
+# _dotfiles_completions() {
+#   local cur="${COMP_WORDS[COMP_CWORD]}"
+#   COMPREPLY=( $(compgen -W 'clean dock duti edit help macos test update' -- $cur ) );
+# }
 
-# npm (https://docs.npmjs.com/cli/completion)
+# complete -o default -F _dotfiles_completions dot
 
-if is-executable npm; then
-  . <(npm completion)
-fi
+# # tmux
 
-# Git
+# if is-executable brew; then
+#   . "$BREW_PREFIX/etc/bash_completion.d/tmux"
+# fi
 
-if is-executable git; then
-  . "$BREW_PREFIX/etc/bash_completion.d/git-completion.bash"
-fi
+# # npm (https://docs.npmjs.com/cli/completion)
 
-# pnpm
+# if is-executable npm; then
+#   . <(npm completion)
+# fi
 
-[ -f ~/.config/tabtab/bash/__tabtab.bash ] && . $HOME/.config/tabtab/bash/__tabtab.bash || true
+# # Git
+
+# if is-executable git; then
+#   . "$BREW_PREFIX/etc/bash_completion.d/git-completion.bash"
+# fi
+
+# # pnpm
+
+# [ -f ~/.config/tabtab/bash/__tabtab.bash ] && . $HOME/.config/tabtab/bash/__tabtab.bash || true

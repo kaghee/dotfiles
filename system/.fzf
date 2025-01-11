@@ -1,4 +1,5 @@
-eval "$(fzf --bash)"
+# Not exactly shell-agnostic but should work for bash/zsh
+eval "$(fzf --${SHELL_NAME}))"
 
 export FZF_CTRL_R_OPTS="
   --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
