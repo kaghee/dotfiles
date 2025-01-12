@@ -1,16 +1,10 @@
 # If not running interactively, don't do anything
 [[ -z "$PROMPT" ]] && return
 
-# Resolve DOTFILES_DIR
-CURRENT_SCRIPT=$0
+  # Assuming ~/.dotfiles
+DOTFILES_DIR="$HOME/.dotfiles"
 
-  # Assuming ~/.dotfiles on distros without readlink and/or $BASH_SOURCE/$0
-  # REVISIT: -x doesn't seem to work for some reason
-if [[ -n $CURRENT_SCRIPT && -x readlink ]]; then
-  SCRIPT_PATH=$(readlink -f $CURRENT_SCRIPT)
-  DOTFILES_DIR="${PWD}/$(dirname $(dirname $SCRIPT_PATH))"
-elif [[ -d "$HOME/projects/.dotfiles" ]]; then
-  DOTFILES_DIR="$HOME/projects/.dotfiles"
+if [[ -d "$DOTFILES_DIR" ]]; then
 else
   echo "Unable to find dotfiles, exiting."
   return
@@ -34,5 +28,5 @@ fi
 eval "$(dircolors -b "$DOTFILES_DIR"/system/.dir_colors)"
 
 # Wrap up
-unset CURRENT_SCRIPT SCRIPT_PATH DOTFILE
+unset DOTFILE
 export DOTFILES_DIR
