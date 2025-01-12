@@ -15,6 +15,9 @@
 	pager = delta
 	ignorecase = false
 
+[commit]
+    template = ~/.config/git/message
+
 [credential]
 	helper = osxkeychain
 
