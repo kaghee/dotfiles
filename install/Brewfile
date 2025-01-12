@@ -18,6 +18,9 @@ brew "thefuck"                      # Programmatically correct mistyped console 
 brew "tmux"                         # Terminal multiplexer
 brew "topgrade"                     # Upgrade all the things
 brew "zsh"                          # UNIX shell
+brew "zsh-autosuggestions"          # Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-syntax-highlighting"      # Fish shell like syntax highlighting for zsh
+brew "zsh-you-should-use"           # ZSH plugin that reminds you to use existing aliases for commands you just typed
 
 # fs/network
 brew "bat"                          # Clone of cat(1) with syntax highlighting and Git integration
