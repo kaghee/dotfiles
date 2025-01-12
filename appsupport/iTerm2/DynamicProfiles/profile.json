@@ -483,7 +483,7 @@
                 "Alpha Component": 1,
                 "Green Component": 0.9042816162109375
             },
-            "Normal Font": "FiraCodeNFM-Reg 13",
+            "Normal Font": "FiraCodeNFM-Med 13",
             "Use Selected Text Color (Dark)": true,
             "Foreground Color": {
                 "Red Component": 0.062745101749897003,
