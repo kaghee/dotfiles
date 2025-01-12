@@ -4,6 +4,8 @@ if [[ "${SHELL_NAME}" == zsh ]] && is-executable brew; then
 
     source ${BREW_PREFIX}/share/git-extras/git-extras-completion.zsh
 
+    source "${BREW_PREFIX}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
+
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="standout"
     source ${BREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
