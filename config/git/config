@@ -47,7 +47,9 @@
 	autocorrect = 1
 
 [alias]
-	amend = commit --amend --reuse-message=HEAD
+	a = add
+    aa = add --all
+    amend = commit --amend --reuse-message=HEAD
 	br = branch
 	ca = commit --amend
     ci = commit
