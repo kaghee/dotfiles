@@ -7,6 +7,7 @@ SHELL := env PATH=$(PATH) /bin/bash
 SHELLS := /private/etc/shells
 BIN := $(HOMEBREW_PREFIX)/bin
 MY_SHELL := zsh
+export APP_SUPPORT_HOME = "${HOME}/Library/Application\ Support"
 export XDG_CONFIG_HOME = $(HOME)/.config
 export STOW_DIR = $(DOTFILES_DIR)
 export ACCEPT_EULA=Y
@@ -40,7 +41,13 @@ endif
 
 packages: brew-packages cask-apps node-packages rust-packages
 
-link: stow-$(OS)
+link-linux:
+	@echo "Nothing Linux-specific to link."
+
+link-macos:
+	stow -t "$(APP_SUPPORT_HOME)" appsupport
+
+link-common:
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
 	mkdir -p "$(XDG_CONFIG_HOME)"
@@ -49,11 +56,21 @@ link: stow-$(OS)
 	mkdir -p $(HOME)/.local/runtime
 	chmod 700 $(HOME)/.local/runtime
 
-unlink: stow-$(OS)
+link: stow-$(OS) link-common link-${OS}
+
+unlink-linux:
+	@echo "Nothing Linux-specific to unlink."
+
+unlink-macos:
+	stow -t "$(APP_SUPPORT_HOME)" appsupport
+
+unlink-common:
 	stow --delete -t "$(HOME)" runcom
 	stow --delete -t "$(XDG_CONFIG_HOME)" config
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
+
+unlink:  stow-$(OS) unlink-common unlink-${OS}
 
 brew:
 	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
