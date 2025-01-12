@@ -8,7 +8,7 @@ if [[ "${SHELL_NAME}" == zsh ]]; then
 else
 
     if is-executable brew; then
-    . "$BREW_PREFIX/share/bash-completion/bash_completion"
+    . "$BREW_PREFIX/etc/profile.d/bash_completion.sh"
     fi
 
     # Dotfiles
