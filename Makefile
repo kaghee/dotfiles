@@ -7,10 +7,14 @@ SHELL := env PATH=$(PATH) /bin/bash
 SHELLS := /private/etc/shells
 BIN := $(HOMEBREW_PREFIX)/bin
 MY_SHELL := zsh
-export APP_SUPPORT_HOME = "${HOME}/Library/Application\ Support"
 export XDG_CONFIG_HOME = $(HOME)/.config
 export STOW_DIR = $(DOTFILES_DIR)
 export ACCEPT_EULA=Y
+
+# Motivation for adding this was iTerm2 profiles. iTerm2 does have a symlink to AppSupport
+# from under .config/iterm2 but stow can't handle symlinks in the target directory.
+# Related issue: https://github.com/aspiers/stow/issues/11
+export APP_SUPPORT_HOME = "${HOME}/Library/Application\ Support"
 
 .PHONY: test
 
