@@ -25,6 +25,7 @@ if [[ "${SHELL_NAME}" == zsh ]]; then
     setopt menu_complete        # Automatically highlight first element of completion menu
     setopt auto_list            # Automatically list choices on ambiguous completion.
     setopt complete_in_word     # Complete from both ends of a word.
+    setopt list_rows_first      # Matches are sorted in rows instead of columns.
 
     # zstyles
 
@@ -37,8 +38,8 @@ if [[ "${SHELL_NAME}" == zsh ]]; then
     # Enable completion for all commands
     zstyle ':completion:*' complete true
 
-    # Autocomplete command options
-    zstyle ':completion:*' complete-options true
+    # Autocomplete cd command options
+    # zstyle ':completion:*' complete-options true
 
     # Use cache for commands using cache
     zstyle ':completion:*' use-cache on
@@ -47,7 +48,7 @@ if [[ "${SHELL_NAME}" == zsh ]]; then
 
     # Complete the alias when _expand_alias is used as a function
     zle -C alias-expansion complete-word _generic
-    bindkey '^Xa' alias-expansion
+    bindkey '^a' alias-expansion
     zstyle ':completion:alias-expansion:*' completer _expand_alias
 
     # Allow you to select in a menu
