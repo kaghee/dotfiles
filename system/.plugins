@@ -1,6 +1,7 @@
-BREW_PREFIX=$(brew --prefix)
 
 if [[ "${SHELL_NAME}" == zsh ]] && is-executable brew; then
+
+    BREW_PREFIX=$(brew --prefix)
 
     source ${BREW_PREFIX}/share/git-extras/git-extras-completion.zsh
 
