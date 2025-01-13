@@ -1,5 +1,6 @@
-BREW_PREFIX=$(brew --prefix)
-
+if is-executable brew; then
+    BREW_PREFIX=$(brew --prefix)
+fi
 
 if [[ "${SHELL_NAME}" == zsh ]]; then
 
@@ -8,7 +9,9 @@ if [[ "${SHELL_NAME}" == zsh ]]; then
     # General
 
     # Load more completions
-    fpath=($BREW_PREFIX/share/zsh-completions $fpath)
+    if is-executable brew; then
+        fpath=($BREW_PREFIX/share/zsh-completions $fpath)
+    fi
 
     # Should be called before compinit
     zmodload zsh/complist
@@ -88,6 +91,20 @@ if [[ "${SHELL_NAME}" == zsh ]]; then
 
     # Completion of hostnames for SSH, SCP, SFTP, RSH, and Rsync commands
     zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
+
+    ## Additional completion-related plugins
+
+    if is-executable brew; then
+
+        source ${BREW_PREFIX}/share/git-extras/git-extras-completion.zsh
+
+        ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="standout"
+        ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+        source ${BREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+        source ${BREW_PREFIX}/share/zsh-you-should-use/you-should-use.plugin.zsh
+
+    fi
 
 else
 

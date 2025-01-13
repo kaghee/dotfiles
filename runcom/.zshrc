@@ -14,7 +14,7 @@ fi
 export PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Source the dotfiles (order matters)
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,n,path,env,exports,alias,fzf,grep,prompt,completion,fix,zoxide,plugins}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,n,path,env,exports,alias,fzf,grep,prompt,completion,fix,zoxide}; do
   source "$DOTFILE"
 done
 

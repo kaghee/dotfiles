@@ -1,7 +1,14 @@
 if [[ "${SHELL_NAME}" == zsh ]]; then
 
+    # Prompt is handled by starship
+    # Note: it's cross-shell, so the bash version could be replaced as well
     if is-executable starship; then
         eval "$(starship init ${SHELL_NAME})"
+    fi
+
+    if is-executable brew; then
+        BREW_PREFIX=$(brew --prefix)
+        source ${BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     fi
 
 else
