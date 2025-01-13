@@ -18,7 +18,7 @@ brew "thefuck"                      # Programmatically correct mistyped console 
 brew "tmux"                         # Terminal multiplexer
 brew "topgrade"                     # Upgrade all the things
 brew "zsh"                          # UNIX shell
-brew "zsh-autocomplete"             # Real-time type-ahead completion for Zsh
+brew "zsh-completions"              # Additional completion definitions for zsh
 brew "zsh-autosuggestions"          # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-syntax-highlighting"      # Fish shell like syntax highlighting for zsh
 brew "zsh-you-should-use"           # ZSH plugin that reminds you to use existing aliases for commands you just typed
