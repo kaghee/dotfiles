@@ -4,9 +4,7 @@ BREW_PREFIX=$(brew --prefix)
 if [[ "${SHELL_NAME}" == zsh ]]; then
 
     # Compinit is removed because of zsh-autocomplete plugin
-    # autoload -U compinit; compinit
-
-    eval "$(zoxide init zsh)"
+    autoload -U compinit; compinit
 
 else
 
