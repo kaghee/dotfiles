@@ -53,6 +53,7 @@
 	br = branch
 	ca = commit --amend
     ci = commit
+    cim = commit -m
 	co = checkout
 	contrib = shortlog --summary --numbered
 	d = diff
@@ -72,10 +73,12 @@
 	rc = rebase --continue
 	rh = reset --hard HEAD
     ri = rebase -i
-	show-ignored = !git clean -ndX | perl -pe 's/Would remove //'
+	show-ignored = !git clean -ndX | sed 's/Would remove //'
 	sshort = "!f() { git show --shortstat \"${1:-HEAD}\" | awk \"/files? changed/ { gsub(/,/, \\\"\\\", \\$4); gsub(/,/, \\\"\\\", \\$6); print \\\"\\033[32m+\\\" \\$4 \\\" \\033[31m-\\\" \\$6 \\\"\\033[0m\\\" }\"; }; f"
 	st = status
     s = st -s
+    sw = switch
+    rt = restore
 
 [diff]
 	renames = copies
