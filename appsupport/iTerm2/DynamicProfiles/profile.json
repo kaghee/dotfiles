@@ -518,7 +518,7 @@
                 "Alpha Component": 1,
                 "Green Component": 0.24931684136390686
             },
-            "Window Type": 0,
+            "Window Type": 1,
             "ASCII Anti Aliased": true,
             "Use Tab Color (Dark)": false,
             "Cursor Guide Color (Dark)": {
