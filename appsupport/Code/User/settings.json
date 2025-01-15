@@ -44,6 +44,7 @@
     "makefile.configureOnOpen": true,
     // CodeSpell
     "cSpell.enabled": true,
+    "cSpell.checkVSCodeSystemFiles": true,
     "cSpell.userWords": [
         "regbank"
     ],
