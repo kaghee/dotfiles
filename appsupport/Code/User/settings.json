@@ -1,0 +1,71 @@
+{
+    "workbench.colorTheme": "Tokyo Night",
+    // Terminal
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.cursorStyle": "underline",
+    "terminal.integrated.cursorStyleInactive": "block",
+    "terminal.explorerKind": "external",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    // Editor
+    "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, FiraCode Nerd Font Mono",
+    "editor.minimap.enabled": false,
+    "editor.acceptSuggestionOnEnter": "smart",
+    "editor.accessibilitySupport": "off",
+    "editor.guides.bracketPairs": true,
+    "editor.formatOnSaveMode": "modificationsIfAvailable",
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        {
+            "column": 80,
+            "color": "#69296950"
+        },
+        {
+            "column": 120,
+            "color": "#692969"
+        },
+    ],
+    // Files
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    // Diff
+    "diffEditor.experimental.showMoves": true,
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    // Git
+    "git.autofetch": true,
+    "git.confirmSync": true,
+    // Github
+    "githubPullRequests.createOnPublishBranch": "never",
+    // ErrorLens
+    "errorLens.enabledDiagnosticLevels": [
+        "error",
+        "warning"
+    ],
+    // Makefile
+    "makefile.configureOnOpen": true,
+    // CodeSpell
+    "cSpell.enabled": true,
+    "cSpell.userWords": [
+        "regbank"
+    ],
+    // Rewrap
+    "rewrap.autoWrap.enabled": true,
+    "rewrap.wrappingColumn": 120,
+    // Telemetry
+    "redhat.telemetry.enabled": false,
+    // Python
+    "python.defaultInterpreterPath": "/System/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python",
+    "python.analysis.typeCheckingMode": "basic",
+    // MyPy
+    "mypy-type-checker.reportingScope": "workspace",
+    "mypy-type-checker.showNotifications": "onError",
+    // File-specific settings
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+}
