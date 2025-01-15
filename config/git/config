@@ -44,7 +44,7 @@
 	lineNumber = true
 
 [help]
-	autocorrect = 1
+	autocorrect = 30
 
 [alias]
 	a = add
