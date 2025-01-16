@@ -69,4 +69,5 @@
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
+    "security.promptForLocalFileProtocolHandling": false,
 }
