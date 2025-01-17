@@ -16,7 +16,7 @@ if [[ "${SHELL_NAME}" == zsh ]]; then
     # Should be called before compinit
     zmodload zsh/complist
 
-    autoload -U compinit; compinit
+    autoload -U compinit; compinit -C
     _comp_options+=(globdots) # With hidden files
 
     # Options

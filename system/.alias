@@ -4,15 +4,25 @@ alias reload="source ~/.${SHELL_NAME}rc"
 
 alias _="sudo"
 alias g="git"
-alias rr="rm -rf"
-alias x="exit"
-alias s=source
+alias s="source"
+alias e="echo"
+alias q="exit"
+alias h="history -E"
+alias c="clear"
 
 # Default options
 
 alias rsync="rsync -vh"
 alias json="json -c"
 alias psgrep="psgrep -i"
+alias rr="rm -rf"
+alias duh="du -hd 1 | sort -h"
+alias cat="bat"
+alias x="xargs -r " # mind the space at the end to make aliases expand after xargs!
+alias rmf="rm -f"
+alias rm="rm -iv"
+alias cp="cp -iv"
+alias mv="mv -iv"
 
 # Global aliases
 
@@ -27,7 +37,7 @@ fi
 
 alias aliases="alias | sed 's/=.*//'"
 alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
-alias paths='echo -e ${PATH//:/\\n}'
+alias paths="echo -e ${PATH//:/\\n}"
 
 # Directory listing/traversal
 
@@ -48,7 +58,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias -- -="cd -"                  # Go to previous dir with -
-alias cd.='cd $(readlink -f .)'    # Go to real dir (i.e. if current dir is linked)
+alias cd.="cd $(readlink -f .)"    # Go to real dir (i.e. if current dir is linked)
 
 # p/npm
 
@@ -69,4 +79,19 @@ alias quit="exit"
 alias week="date +%V"
 alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
 alias grip="grip --browser --pass=$GITHUB_TOKEN"
-alias genv='(){ env | grep -i $1. ;}'
+
+# fzf
+
+alias fzp="fzf -m --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+alias fzd="fzf -m --preview 'git diff --color=always -w {}'"
+
+# Combo meals
+
+# Stage untracked files after content preview
+# g lsu | fzp | x g a
+
+# Stage all tracked files after diff preview
+# g lsm | fzd | x g au
+
+# Search for files to delete after preview
+# fzp | x rm

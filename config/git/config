@@ -49,6 +49,7 @@
 [alias]
 	a = add
     aa = add --all
+    au = add -u
     amend = commit --amend --reuse-message=HEAD
 	br = branch
 	ca = commit --amend
@@ -67,6 +68,8 @@
 	ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
 	ll = log --graph --abbrev-commit --pretty=oneline
 	lm = log --pretty=format:'* %s (%h)'
+    lsm = !git --no-pager ls-files -m | xargs -I{} echo $(git rev-parse --show-toplevel)/{}
+    lso = !git --no-pager ls-files -o --exclude-standard | xargs -I{} echo $(git rev-parse --show-toplevel)/{}
 	p = push
 	patch = !git --no-pager diff --no-color
 	pf = push --force --force-with-lease
@@ -107,7 +110,7 @@
 	trustExitCode = true
 
 [include]
-    path = ~/.config/git//themes.gitconfig
+    path = ~/.config/git/themes.gitconfig
 
 [delta]
     true-color=always

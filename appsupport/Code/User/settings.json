@@ -70,4 +70,5 @@
         "editor.defaultFormatter": "vscode.json-language-features"
     },
     "security.promptForLocalFileProtocolHandling": false,
+    "diffEditor.ignoreTrimWhitespace": true,
 }

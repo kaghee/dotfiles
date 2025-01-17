@@ -34,3 +34,10 @@ meteo() {
   LOCATION="${LOCATION// /%20}"
   curl -s "$LOCALE.wttr.in/${LOCATION:-}"
 }
+
+# GUI
+
+gui () {
+    "$@" &
+    disown
+}
