@@ -17,7 +17,11 @@ ps2() {
 # Get named var (usage: get "VAR_NAME")
 
 get() {
-  echo "${!1}"
+  if [[ "${SHELL_NAME}" == zsh ]]; then
+    echo ${(P)1}
+  else
+    echo "${!1}"
+  fi
 }
 
 # Calculator
