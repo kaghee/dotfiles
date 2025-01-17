@@ -24,5 +24,4 @@
 #--map-syntax "*.ino:C++"
 #--map-syntax ".ignore:Git Ignore"
 
--P
 --theme=zenburn

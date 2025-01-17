@@ -17,7 +17,7 @@ alias json="json -c"
 alias psgrep="psgrep -i"
 alias rr="rm -rf"
 alias duh="du -hd 1 | sort -h"
-alias cat="bat"
+alias cat="bat --paging=never --color=never --decorations=never --style=plain"
 alias x="xargs -r " # mind the space at the end to make aliases expand after xargs!
 alias rmf="rm -f"
 alias rm="rm -iv"
