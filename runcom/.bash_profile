@@ -6,13 +6,13 @@
 CURRENT_SCRIPT=$BASH_SOURCE
 
 if [[ -n $CURRENT_SCRIPT && -x readlink ]]; then
-  SCRIPT_PATH=$(readlink -n $CURRENT_SCRIPT)
-  DOTFILES_DIR="${PWD}/$(dirname $(dirname $SCRIPT_PATH))"
+    SCRIPT_PATH=$(readlink -n $CURRENT_SCRIPT)
+    DOTFILES_DIR="${PWD}/$(dirname $(dirname $SCRIPT_PATH))"
 elif [ -d "$HOME/.dotfiles" ]; then
-  DOTFILES_DIR="$HOME/.dotfiles"
+    DOTFILES_DIR="$HOME/.dotfiles"
 else
-  echo "Unable to find dotfiles, exiting."
-  return
+    echo "Unable to find dotfiles, exiting."
+    return
 fi
 
 # Make utilities available
@@ -21,14 +21,14 @@ PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Source the dotfiles (order matters)
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,n,path,env,exports,alias,fzf,grep,prompt,completion,fix,zoxide}; do
-  . "$DOTFILE"
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,n,path,env,exports,alias,fzf,grep,prompt,completion,fix,zoxide,python}; do
+    . "$DOTFILE"
 done
 
 if is-macos; then
-  for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function}.macos; do
-    . "$DOTFILE"
-  done
+    for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function}.macos; do
+        . "$DOTFILE"
+    done
 fi
 
 # Set LSCOLORS

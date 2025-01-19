@@ -24,7 +24,7 @@ macos: sudo core-macos packages link duti
 
 linux: core-linux link
 
-core-macos: brew ${MY_SHELL} git npm
+core-macos: brew ${MY_SHELL} git npm python
 
 core-linux:
 	apt-get update
@@ -111,6 +111,10 @@ endif
 
 git: brew
 	brew install git git-extras
+
+python: brew
+	is-executable pyenv || brew install pyenv
+	pyenv install 3
 
 npm: brew-packages
 	n install lts

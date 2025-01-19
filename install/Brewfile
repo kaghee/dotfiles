@@ -49,6 +49,7 @@ brew "gh"                           # GitHub command-line tool
 brew "n"                            # Node version management
 brew "python"                       # Interpreted, interactive, object-oriented programming language
 brew "pyenv"                        # Python version management
+brew "pyenv-virtualenv"             # Pyenv plugin to manage virtualenv
 brew "ruby"                         # Powerful, clean, object-oriented scripting language
 brew "rust"                         # Safe, concurrent, practical language
 brew "shellcheck"                   # Static analysis and lint tool, for (ba)sh scripts
