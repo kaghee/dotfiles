@@ -1,6 +1,6 @@
 eval "$(fzf --${SHELL_NAME}))"
 
-export FZF_DEFAULT_COMMAND='fd . -H -i -E .git'
+export FZF_DEFAULT_COMMAND='fd . -HiE .git'
 
 export FZF_DEFAULT_OPTS="\
 --ignore-case \
@@ -28,10 +28,10 @@ export FZF_CTRL_T_OPTS="\
 --preview-label='[ Preview ]' \
 --preview-label-pos='3:bottom' \
 \
---bind='ctrl-e:change-prompt(:: )' \
---bind='ctrl-e:+reload(eval $FZF_DEFAULT_COMMAND)' \
---bind='ctrl-e:+change-preview(stat {})' \
---bind='ctrl-e:+refresh-preview' \
+--bind='ctrl-r:change-prompt(:: )' \
+--bind='ctrl-r:+reload(eval $FZF_DEFAULT_COMMAND)' \
+--bind='ctrl-r:+change-preview(stat {})' \
+--bind='ctrl-r:+refresh-preview' \
 \
 --bind='ctrl-d:change-prompt(Dirs :: )' \
 --bind='ctrl-d:+reload(eval $FZF_DEFAULT_COMMAND -t d)' \
@@ -47,47 +47,23 @@ export FZF_CTRL_T_OPTS="\
 --bind='ctrl-a:select-all' \
 --bind='ctrl-x:deselect-all' \
 --header '
-Directories (CTRL-d) | Files (CTRL-f) | Default (CTRL-r)
-Select all (CTRL-a) | Deselect all (CTRL-x)
-Toggle preview (CTRL-p)
+CTRL-D (dirs) | CTRL-F (files) | CTRL-E (everything)
+CTRL-A (select all) | CTRL-X (de-select all)
+CTRL-P (toggle preview)
 '
 "
 
-fb() {
+export FZF_COMPLETION_DIR_COMMANDS="cd pushd rmdir tree"
 
-    # Store the STDOUT of fzf in a variable
-    selection=$(find . -type d | fzf \
-    --multi \
-    --height=80% \
-    --border=sharp \
-    --preview='tree -C {}' \
-    --preview-window='45%,border-sharp' \
-    --prompt='Dirs > ' \
-    --bind='ctrl-p:toggle-preview' \
-    --bind='ctrl-d:change-prompt(Dirs > )' \
-    --bind='ctrl-d:+reload(find . -type d)' \
-    --bind='ctrl-d:+change-preview(tree -C {})' \
-    --bind='ctrl-d:+refresh-preview' \
-    --bind='ctrl-f:change-prompt(Files > )' \
-    --bind='ctrl-f:+reload(find . -type f)' \
-    --bind='ctrl-f:+change-preview(cat {})' \
-    --bind='ctrl-f:+refresh-preview' \
-    --bind='ctrl-a:select-all' \
-    --bind='ctrl-x:deselect-all' \
-    --header '
-    CTRL-D to display directories | CTRL-F to display files
-    CTRL-A to select all | CTRL-x to deselect all
-    ENTER to edit | DEL to delete
-    CTRL-P to toggle preview
-    '
-    )
+export FZF_COMPLETION_OPTS="\
+"
 
-    # Determine what to do depending on the selection
-    # BUG: if nothing is selected, the editor still opens
-    if [ -d "$selection" ]; then
-        cd "$selection" || exit
-    else
-        eval "$EDITOR $selection"
-    fi
+_fzf_comprun() {
+    local command=$1
+    shift
 
+    case "$command" in
+    tree) fd . -HiE .git -t d | fzf --preview 'tree -C {}' "$@" ;;
+    *) fzf "$@" ;;
+    esac
 }

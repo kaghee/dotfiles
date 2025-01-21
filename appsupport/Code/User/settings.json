@@ -1,5 +1,4 @@
 {
-    "workbench.colorTheme": "Tokyo Night",
     // Terminal
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.cursorStyle": "underline",
@@ -12,6 +11,7 @@
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.accessibilitySupport": "off",
     "editor.guides.bracketPairs": true,
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
     "editor.formatOnSaveMode": "modificationsIfAvailable",
     "editor.formatOnSave": true,
     "editor.rulers": [
@@ -28,6 +28,7 @@
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     // Diff
+    "diffEditor.ignoreTrimWhitespace": true,
     "diffEditor.experimental.showMoves": true,
     "diffEditor.hideUnchangedRegions.enabled": true,
     // Git
@@ -54,7 +55,8 @@
     // Telemetry
     "redhat.telemetry.enabled": false,
     // Python
-    "python.defaultInterpreterPath": "/System/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python",
+    "python.defaultInterpreterPath": "~/.pyenv/shims/python",
+    "python.analysis.completeFunctionParens": true,
     "python.analysis.typeCheckingMode": "basic",
     // MyPy
     "mypy-type-checker.reportingScope": "workspace",
@@ -69,6 +71,8 @@
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
+    // Security
     "security.promptForLocalFileProtocolHandling": false,
-    "diffEditor.ignoreTrimWhitespace": true,
+    // Workbench
+    "workbench.colorTheme": "Tokyo Night",
 }
