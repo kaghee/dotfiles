@@ -1,4 +1,9 @@
 {
+    //
+    // Built-in
+    //
+    // Workbench
+    "workbench.colorTheme": "Tokyo Night",
     // Terminal
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.cursorStyle": "underline",
@@ -24,13 +29,28 @@
             "color": "#692969"
         },
     ],
-    // Files
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
     // Diff
     "diffEditor.ignoreTrimWhitespace": true,
     "diffEditor.experimental.showMoves": true,
     "diffEditor.hideUnchangedRegions.enabled": true,
+    // Files
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    // File-specific settings
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    // Security
+    "security.promptForLocalFileProtocolHandling": false,
+    //
+    // Extensions
+    //
     // Git
     "git.autofetch": true,
     "git.confirmSync": true,
@@ -41,8 +61,6 @@
         "error",
         "warning"
     ],
-    // Makefile
-    "makefile.configureOnOpen": true,
     // CodeSpell
     "cSpell.enabled": true,
     "cSpell.checkVSCodeSystemFiles": true,
@@ -58,21 +76,15 @@
     "python.defaultInterpreterPath": "~/.pyenv/shims/python",
     "python.analysis.completeFunctionParens": true,
     "python.analysis.typeCheckingMode": "basic",
+    // Autopep8
+    "autopep8.args": [
+        "--max-line-length=120"
+    ],
     // MyPy
     "mypy-type-checker.reportingScope": "workspace",
     "mypy-type-checker.showNotifications": "onError",
-    // File-specific settings
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.autopep8"
-    },
-    "[yaml]": {
-        "editor.defaultFormatter": "redhat.vscode-yaml"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    // Security
-    "security.promptForLocalFileProtocolHandling": false,
-    // Workbench
-    "workbench.colorTheme": "Tokyo Night",
+    // Makefile
+    "makefile.configureOnOpen": true,
+    //
+    // End-of-manually-ordered-config
 }
