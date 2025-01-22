@@ -69,8 +69,8 @@
 	g = grep --break --heading --line-number
 	home = browse
 	l = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-	ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
 	ll = log --graph --abbrev-commit --pretty=oneline
+	ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
 	lm = log --pretty=format:'* %s (%h)'
     ls = !git --no-pager ls-files -om --exclude-standard
     lsm = !git --no-pager ls-files -m | xargs -I{} echo $(git rev-parse --show-toplevel)/{}
@@ -80,12 +80,12 @@
 	pf = push --force --force-with-lease
 	ra = rebase --abort
 	rc = rebase --continue
-	rh = reset --hard HEAD
+	rh = reset --hard
     ri = rebase -i
 	show-ignored = !git clean -ndX | sed 's/Would remove //'
 	sshort = "!f() { git show --shortstat \"${1:-HEAD}\" | awk \"/files? changed/ { gsub(/,/, \\\"\\\", \\$4); gsub(/,/, \\\"\\\", \\$6); print \\\"\\033[32m+\\\" \\$4 \\\" \\033[31m-\\\" \\$6 \\\"\\033[0m\\\" }\"; }; f"
 	st = status
-    s = st -s
+    s = status -s
     sw = switch
     rt = restore
 
