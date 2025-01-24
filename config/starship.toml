@@ -39,17 +39,17 @@ format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
 [git_status]
 style = "bg:#394260"
 format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
-conflicted = '🏳'
-ahead = '🏎️💨${count}'
-behind = '😰${count}'
-diverged = '😵'
-up_to_date = '👌'
-untracked = '🤷'
-stashed = '📦'
-modified = '📝'
+conflicted = ''
+ahead = '󰑮${count}'
+behind = '${count}'
+diverged = ''
+up_to_date = ''
+untracked = ''
+stashed = ''
+modified = ''
 staged = '[++\($count\)](green)'
-renamed = '👅'
-deleted = '🗑'
+renamed = '󰑕'
+deleted = '󰆴'
 
 [nodejs]
 symbol = ""
@@ -78,21 +78,21 @@ style = "bg:#1d2230"
 format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
 
 [python]
-symbol = "🐍 "
+symbol = "󱔎 "
 
 [battery]
-full_symbol = '🔋 '
-charging_symbol = '⚡️ '
+full_symbol = '󰁹 '
+charging_symbol = '󰂄 '
 
 [[battery.display]]
 threshold = 20
 style = 'bold red'
-discharging_symbol = '💀 '
+discharging_symbol = ' '
 
 [[battery.display]]
 threshold = 30
 style = 'bold yellow'
-discharging_symbol = '🪫 '
+discharging_symbol = '󰁺 '
 
 [cmd_duration]
 style = 'yellow'
