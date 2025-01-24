@@ -1,10 +1,11 @@
+# Shoutout to Phantas0s for the great article on zsh completion:
+#   https://thevaluable.dev/zsh-completion-guide-examples/
+
 if is-executable brew; then
     BREW_PREFIX=$(brew --prefix)
 fi
 
 if [[ "${SHELL_NAME}" == zsh ]]; then
-
-    # Based on https://thevaluable.dev/zsh-completion-guide-examples/
 
     # General
 
@@ -65,8 +66,9 @@ if [[ "${SHELL_NAME}" == zsh ]]; then
     zstyle ':completion:*:*:*:*:messages' format ' %F{purple} -- %d --%f'
     zstyle ':completion:*:*:*:*:warnings' format ' %F{red}-- no matches found --%f'
 
-    # Display number of matches (doesn't seem to work)
-    # zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+    # BUG: doesn't seem to work
+    # Display number of matches
+    zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 
     # Colors for files and directory
     zstyle ':completion:*:*:*:*:default' list-colors ${(s.:.)LS_COLORS}
@@ -80,7 +82,7 @@ if [[ "${SHELL_NAME}" == zsh ]]; then
     # Required for completion to be in good groups (named after the tags)
     zstyle ':completion:*' group-name ''
 
-    # The order in which completion suggestions are grouped and         displayed
+    # The order in which completion suggestions are grouped and displayed
     zstyle ':completion:*:*:-command-:*:*' group-order aliases builtins functions commands
 
     # Case-insensitive matching and special characters
@@ -99,7 +101,7 @@ if [[ "${SHELL_NAME}" == zsh ]]; then
 
         source ${BREW_PREFIX}/share/git-extras/git-extras-completion.zsh
 
-        ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="standout"
+        ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="bg=244"
         ZSH_AUTOSUGGEST_STRATEGY=(history completion)
         source ${BREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 

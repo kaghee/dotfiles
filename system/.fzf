@@ -9,6 +9,7 @@ eval "$(fzf --${SHELL_NAME}))"
 export FZF_DEFAULT_COMMAND='fd . -HiE .git'
 
 export FZF_DEFAULT_OPTS="\
+--ansi \
 --ignore-case \
 --multi \
 --color=dark,fg:gray \
@@ -64,6 +65,8 @@ export FZF_COMPLETION_DIR_COMMANDS="cd pushd rmdir tree"
 export FZF_COMPLETION_OPTS="\
 "
 
+# Completions
+
 _fzf_comprun() {
     local command=$1
     shift
@@ -74,7 +77,15 @@ _fzf_comprun() {
     esac
 }
 
+_fzf_complete_git() {
+    _fzf_complete -- "$@" < <(
+        git --help -a | grep -E '^\s+' | awk '{print $1}'
+    )
+}
+
 # Git
+
+# TODO: fix ALT keys
 
 fgf() {
     local -r prompt_add="Add > "
@@ -157,13 +168,13 @@ fgf() {
 fgc() {
     local -r git_log=$(
         cat <<-EOF
-		git log --graph --color --format="%C(white)%h - %C(green)%cs - %C(blue)%s%C(red)%d"
+		git log --graph --color --format="%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"
 	EOF
     )
 
     local -r git_log_all=$(
         cat <<-EOF
-		git log --all --graph --color --format="%C(white)%h - %C(green)%cs - %C(blue)%s%C(red)%d"
+		git log --all --graph --color --format="%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"
 	EOF
     )
 
