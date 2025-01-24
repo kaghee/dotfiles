@@ -50,44 +50,77 @@
 [help]
 	autocorrect = 30
 
+[pretty]
+    log = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+
 [alias]
-	a = add
+    # Status
+    s = status --short
+    st = diff --name-only --staged
+	# REVISIT: this is madness and possible won't be used
+    ss = "!f() { git show --shortstat \"${1:-HEAD}\" | awk \"/files? changed/ { gsub(/,/, \\\"\\\", \\$4); gsub(/,/, \\\"\\\", \\$6); print \\\"\\033[32m+\\\" \\$4 \\\" \\033[31m-\\\" \\$6 \\\"\\033[0m\\\" }\"; }; f"
+
+    # List files
+    lsa = !git --no-pager ls-files --modified --deleted --other --exclude-standard --deduplicate $(git rev-parse --show-toplevel)
+    lsm = !git --no-pager ls-files --modified $(git rev-parse --show-toplevel)
+    lso = !git --no-pager ls-files --other --exclude-standard $(git rev-parse --show-toplevel)
+    lsi = lso --ignored
+
+    # Grep
+    g = grep --break --heading --line-number
+
+	# Files
+    a = add
     aa = add --all
-    au = add -u
-    amend = commit --amend --reuse-message=HEAD
-	br = branch
+    au = add --update
+    rt = restore
+    rts = restore --staged
 	ca = commit --amend
 	caf = commit --amend --no-edit
     ci = commit
-    cim = commit -m
+    cim = commit --message=
+
+	# Branches
+    b = branch
+    cb = checkout -b
 	co = checkout
-	contrib = shortlog --summary --numbered
-	d = diff -w
-	ds = d -U0
-	diffstat = "!f() { if [ $# -eq 0 ]; then git show --shortstat HEAD | tail -1; else git show --shortstat $1 | tail -1; fi; }; f"
-	fc = "log --max-parents=0 --pretty=format:'%ad' --date=format:'%Y-%m-%d' -n 1"
-	g = grep --break --heading --line-number
-	home = browse
-	l = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-	ll = log --graph --abbrev-commit --pretty=oneline
-	ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
-	lm = log --pretty=format:'* %s (%h)'
-    ls = !git --no-pager ls-files -om --exclude-standard
-    lsm = !git --no-pager ls-files -m | xargs -I{} echo $(git rev-parse --show-toplevel)/{}
-    lso = !git --no-pager ls-files -o --exclude-standard | xargs -I{} echo $(git rev-parse --show-toplevel)/{}
-	p = push
-	patch = !git --no-pager diff --no-color
-	pf = push --force --force-with-lease
+    sw = switch
+
+    # Rebase
+    ri = rebase --interactive
 	ra = rebase --abort
 	rc = rebase --continue
 	rh = reset --hard
-    ri = rebase -i
-	show-ignored = !git clean -ndX | sed 's/Would remove //'
-	sshort = "!f() { git show --shortstat \"${1:-HEAD}\" | awk \"/files? changed/ { gsub(/,/, \\\"\\\", \\$4); gsub(/,/, \\\"\\\", \\$6); print \\\"\\033[32m+\\\" \\$4 \\\" \\033[31m-\\\" \\$6 \\\"\\033[0m\\\" }\"; }; f"
-	st = status
-    s = status -s
-    sw = switch
-    rt = restore
+	rh1 = rh HEAD^
+
+	# Remote
+    p = push
+	pf = push --force --force-with-lease
+    pl = pull
+
+    # Diff
+	d = diff --unified=0
+	dw = d --word-diff
+	patch = !git --no-pager diff --no-color
+    diffstat = "!f() { if [ $# -eq 0 ]; then git show --shortstat HEAD | tail -1; else git show --shortstat $1 | tail -1; fi; }; f"
+
+    # Log
+    ## Graph with custom format
+    ll = log --graph --abbrev-commit --pretty=log
+    ## Graph with custom format and only the last commits by default
+    l = !git ll ${1:--10}
+    ## Fuzzy log, returning the whole log line(s) to the command line
+    fll = !git ll --color=always | fzf
+    ## Fuzzy log, returning only the SHA(s) to the command line
+    fl = !git fll | awk '{print $2}' | xargs -I{} git rev-parse {}
+    ## Date of the first commit
+	fc = "log --max-parents=0 --pretty=format:'%ad' --date=format:'%Y-%m-%d' -n 1"
+	## My commits from the last N (1 by default) days
+    ld = "!sh -c \"git ll --since '${1:-1} days ago' --author $(git config user.email)\" -"
+
+    # Misc
+    ## Browse remote
+	h = browse
 
 [diff]
 	renames = copies
