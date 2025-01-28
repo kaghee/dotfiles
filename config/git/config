@@ -78,7 +78,7 @@
 	ca = commit --amend
 	caf = commit --amend --no-edit
     ci = commit
-    cim = commit --message=
+    cim = commit -m
 
 	# Branches
     b = branch
@@ -117,6 +117,8 @@
 	fc = "log --max-parents=0 --pretty=format:'%ad' --date=format:'%Y-%m-%d' -n 1"
 	## My commits from the last N (1 by default) days
     ld = "!sh -c \"git ll --since '${1:-1} days ago' --author $(git config user.email)\" -"
+    ## New commits since last command i.e., pull
+    new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
 
     # Misc
     ## Browse remote

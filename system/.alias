@@ -20,17 +20,17 @@ alias duh="du -hd 1 | sort -h"
 alias cat="bat --paging=never --color=never --decorations=never --style=plain"
 alias x="xargs -r " # mind the space at the end to make aliases expand after xargs!
 alias rmf="rm -f"
-alias rm="rm -iv"
-alias cp="cp -iv"
-alias mv="mv -iv"
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
 
 # Global aliases
 
 if $(is-supported "alias -g"); then
-  alias -g G="| grep -i"
-  alias -g H="| head"
-  alias -g T="| tail"
-  alias -g L="| less"
+    alias -g G="| grep -i"
+    alias -g H="| head"
+    alias -g T="| tail"
+    alias -g L="| less"
 fi
 
 # List declared aliases, functions, paths
@@ -57,8 +57,8 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias -- -="cd -"                  # Go to previous dir with -
-alias cd.="cd $(readlink -f .)"    # Go to real dir (i.e. if current dir is linked)
+alias -- -="cd -"               # Go to previous dir with -
+alias cd.="cd $(readlink -f .)" # Go to real dir (i.e. if current dir is linked)
 
 # p/npm
 
