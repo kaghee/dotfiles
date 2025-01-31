@@ -12,17 +12,21 @@ $rust\
 $golang\
 $php\
 $python\
-[](fg:#212736 bg:#1d2230)\
-$time\
-$cmd_duration\
-$battery\
 [ ](fg:#1d2230)\
-$character"""
+\n$character"""
+
+right_format = """
+[](fg:#1d2230)\
+$battery\
+$cmd_duration\
+$time\
+"""
 
 [directory]
 style = "fg:#e3e5e5 bg:#769ff0"
 format = "[ $path ]($style)"
 truncation_length = 3
+
 truncation_symbol = "…/"
 
 [directory.substitutions]
@@ -71,14 +75,16 @@ symbol = ""
 style = "bg:#212736"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
+[python]
+symbol = "󱔎"
+style = "bg:#212736"
+format = '[[ $symbol ($version) (\($virtualenv\))](fg:#769ff0 bg:#212736)]($style)'
+
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#1d2230"
 format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
-
-[python]
-symbol = "󱔎 "
 
 [battery]
 full_symbol = '󰁹 '
@@ -95,7 +101,7 @@ style = 'bold yellow'
 discharging_symbol = '󰁺 '
 
 [cmd_duration]
-style = 'yellow'
-format = '[$duration]($style) '
+style = "bg:#1d2230"
+format = '[[$duration ](fg:#a0a9cb bg:#1d2230)]($style)'
 min_time = 100
 show_milliseconds = true
