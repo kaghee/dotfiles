@@ -1,3 +1,7 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
 format = """
 [░▒▓](#a3aed2)\
 [  ](bg:#a3aed2 fg:#090c0c)\
@@ -13,7 +17,8 @@ $golang\
 $php\
 $python\
 [ ](fg:#1d2230)\
-\n$character"""
+\n$character\
+"""
 
 right_format = """
 [](fg:#1d2230)\
@@ -21,6 +26,10 @@ $battery\
 $cmd_duration\
 $time\
 """
+
+[character]
+success_symbol = '[❯](bold green) '
+error_symbol = '[✗](bold red) '
 
 [directory]
 style = "fg:#e3e5e5 bg:#769ff0"

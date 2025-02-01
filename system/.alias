@@ -59,6 +59,8 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias -- -="cd -"               # Go to previous dir with -
 alias cd.="cd $(readlink -f .)" # Go to real dir (i.e. if current dir is linked)
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 # p/npm
 
