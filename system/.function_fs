@@ -41,5 +41,17 @@ dataurl() {
 # Tree
 
 t() {
-  tree -AdL ${1:-1}
+  tree -AdL ${1:-1};
+}
+
+# Grep
+
+gr() {
+  grep -rnIie "$1" . --exclude-dir={.git,.venv,.mypy_cache} --color;
+}
+
+# For when ..... is not enough
+
+up() {
+  cd $(eval printf '../'%.0s {1..$1});
 }

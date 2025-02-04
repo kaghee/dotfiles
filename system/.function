@@ -17,7 +17,11 @@ ps2() {
 # Get named var (usage: get "VAR_NAME")
 
 get() {
-  echo "${!1}"
+  if [[ "${SHELL_NAME}" == zsh ]]; then
+    echo ${(P)1}
+  else
+    echo "${!1}"
+  fi
 }
 
 # Calculator
@@ -33,4 +37,26 @@ meteo() {
   local LOCATION="$*"
   LOCATION="${LOCATION// /%20}"
   curl -s "$LOCALE.wttr.in/${LOCATION:-}"
+}
+
+# GUI
+
+gui () {
+    "$@" &> /dev/null & disown
+}
+
+# Pomodoro timer
+
+pom() {
+    local -r HOURS=${1:?}
+    local -r MINUTES=${2:-0}
+    local -r POMODORO_DURATION=${3:-25}
+
+    bc <<< "(($HOURS * 60) + $MINUTES) / $POMODORO_DURATION"
+}
+
+bak() {
+    for file in "$@"; do
+        cp "$file" "$file".bak
+    done
 }

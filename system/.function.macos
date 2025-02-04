@@ -6,7 +6,7 @@ function cdf() {
 
 # Dev
 
-d() {
+dev() {
   $VISUAL ${1:-.}
   $VISUAL_GIT ${1:-.}
 }

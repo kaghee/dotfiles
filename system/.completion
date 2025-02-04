@@ -1,38 +1,149 @@
-BREW_PREFIX=$(brew --prefix)
-
-# Bash
-
-if is-executable brew; then
-  . "$BREW_PREFIX/share/bash-completion/bash_completion"
-fi
-
-# Dotfiles
-
-_dotfiles_completions() {
-  local cur="${COMP_WORDS[COMP_CWORD]}"
-  COMPREPLY=( $(compgen -W 'clean dock duti edit help macos test update' -- $cur ) );
-}
-
-complete -o default -F _dotfiles_completions dot
-
-# tmux
+# Shoutout to Phantas0s for the great article on zsh completion:
+#   https://thevaluable.dev/zsh-completion-guide-examples/
 
 if is-executable brew; then
-  . "$BREW_PREFIX/etc/bash_completion.d/tmux"
+    BREW_PREFIX=$(brew --prefix)
 fi
 
-# npm (https://docs.npmjs.com/cli/completion)
+if [[ "${SHELL_NAME}" == zsh ]]; then
 
-if is-executable npm; then
-  . <(npm completion)
+    # General
+
+    # Load more completions
+    if is-executable brew; then
+        fpath=($BREW_PREFIX/share/zsh-completions $fpath)
+    fi
+
+    # Should be called before compinit
+    zmodload zsh/complist
+
+    autoload -U compinit; compinit -C
+    _comp_options+=(globdots) # With hidden files
+
+    # Options
+
+    setopt glob_complete        # Show autocompletion menu with globs
+    setopt menu_complete        # Automatically highlight first element of completion menu
+    setopt auto_list            # Automatically list choices on ambiguous completion.
+    setopt complete_in_word     # Complete from both ends of a word.
+    setopt list_rows_first      # Matches are sorted in rows instead of columns.
+
+    # zstyles
+
+    # Ztyle pattern
+    # :completion:<function>:<completer>:<command>:<argument>:<tag>
+
+    # Define completers
+    zstyle ':completion:*' completer _extensions _complete _approximate
+
+    # Enable completion for all commands
+    zstyle ':completion:*' complete true
+
+    # Autocomplete cd command options
+    # zstyle ':completion:*' complete-options true
+
+    # Use cache for commands using cache
+    zstyle ':completion:*' use-cache on
+    zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
+    zstyle ':complist:*' cache true
+
+    # Complete the alias when _expand_alias is used as a function
+    zle -C alias-expansion complete-word _generic
+    bindkey '^a' alias-expansion
+    zstyle ':completion:alias-expansion:*' completer _expand_alias
+
+    # Allow you to select in a menu
+    zstyle ':completion:*' menu select
+    # Enable Shift+Tab
+    bindkey -M menuselect '^[[Z' reverse-menu-complete
+
+    # Sort suggestions by modification time
+    zstyle ':completion:*' file-sort modification
+
+    # Formatting
+    zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
+    zstyle ':completion:*:*:*:*:descriptions' format '%F{blue}-- %D %d --%f'
+    zstyle ':completion:*:*:*:*:messages' format ' %F{purple} -- %d --%f'
+    zstyle ':completion:*:*:*:*:warnings' format ' %F{red}-- no matches found --%f'
+
+    # BUG: doesn't seem to work
+    # Display number of matches
+    zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+
+    # Colors for files and directory
+    zstyle ':completion:*:*:*:*:default' list-colors ${(s.:.)LS_COLORS}
+
+    # Only display some tags for the command cd
+    zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
+
+    # The core Git subcommands are presented first in the completion list
+    zstyle ':completion:*:complete:git:argument-1:' tag-order !aliases
+
+    # Required for completion to be in good groups (named after the tags)
+    zstyle ':completion:*' group-name ''
+
+    # The order in which completion suggestions are grouped and displayed
+    zstyle ':completion:*:*:-command-:*:*' group-order aliases builtins functions commands
+
+    # Case-insensitive matching and special characters
+    # See ZSHCOMPWID "completion matching control"
+    zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+    # Keep the prefix
+    zstyle ':completion:*' keep-prefix true
+
+    # Completion of hostnames for SSH, SCP, SFTP, RSH, and Rsync commands
+    zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
+
+    ## Additional completion-related plugins
+
+    if is-executable brew; then
+
+        source ${BREW_PREFIX}/share/git-extras/git-extras-completion.zsh
+
+        ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="bg=244"
+        ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+        source ${BREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+        source ${BREW_PREFIX}/share/zsh-you-should-use/you-should-use.plugin.zsh
+
+    fi
+
+else
+
+    if is-executable brew; then
+    . "$BREW_PREFIX/etc/profile.d/bash_completion.sh"
+    fi
+
+    # Dotfiles
+
+    _dotfiles_completions() {
+        local cur="${COMP_WORDS[COMP_CWORD]}"
+        COMPREPLY=( $(compgen -W 'clean dock duti edit help macos test update' -- $cur ) );
+    }
+
+    complete -o default -F _dotfiles_completions dot
+
+    # tmux
+
+    if is-executable brew; then
+    . "$BREW_PREFIX/etc/bash_completion.d/tmux"
+    fi
+
+    # npm (https://docs.npmjs.com/cli/completion)
+
+    if is-executable npm; then
+    . <(npm completion)
+    fi
+
+    # Git
+
+    if is-executable git; then
+    . "$BREW_PREFIX/etc/bash_completion.d/git-completion.bash"
+    fi
+
+    # pnpm
+
+    [ -f ~/.config/tabtab/bash/__tabtab.bash ] && . $HOME/.config/tabtab/bash/__tabtab.bash || true
+
 fi
-
-# Git
-
-if is-executable git; then
-  . "$BREW_PREFIX/etc/bash_completion.d/git-completion.bash"
-fi
-
-# pnpm
-
-[ -f ~/.config/tabtab/bash/__tabtab.bash ] && . $HOME/.config/tabtab/bash/__tabtab.bash || true

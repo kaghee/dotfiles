@@ -2,50 +2,63 @@ tap "homebrew/bundle"
 tap "lotyp/homebrew-formulae"
 
 # core/dotfiles
-brew "bats-core"
-brew "coreutils"
-brew "duti"
-brew "lotyp/formulae/dockutil"
-brew "nano"
-brew "stow"
-brew "thefuck"
-brew "tmux"
-brew "topgrade"
+brew "bash-completion"              # Programmable completion for Bash 3.2
+brew "bats-core"                    # Bash Automated Testing System
+brew "coreutils"                    # GNU File, Shell, and Text utilities
+brew "duti"                         # Select default apps for documents and URL schemes
+brew "git"                          # Distributed revision control system
+brew "git-extras"                   # Small git utilities
+brew "lotyp/formulae/dockutil"      # Tool for managing dock items
+brew "mas"                          # Mac App Store command-line interface
+brew "nano"                         # Free (GNU) replacement for the Pico text editor
+brew "pre-commit"                   # Framework for managing multi-language pre-commit hooks
+brew "starship"                     # Cross-shell prompt for astronauts
+brew "stow"                         # Organize software neatly under a single directory tree (e.g. /usr/local)
+brew "thefuck"                      # Programmatically correct mistyped console commands
+brew "tmux"                         # Terminal multiplexer
+brew "topgrade"                     # Upgrade all the things
+brew "zsh"                          # UNIX shell
+brew "zsh-completions"              # Additional completion definitions for zsh
+brew "zsh-autosuggestions"          # Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-syntax-highlighting"      # Fish shell like syntax highlighting for zsh
+brew "zsh-you-should-use"           # ZSH plugin that reminds you to use existing aliases for commands you just typed
 
 # fs/network
-brew "bat"
-brew "croc"
-brew "httpie"
-brew "ssh-copy-id"
-brew "tree"
-brew "unar"
-brew "wget"
-brew "zoxide"
+brew "bat"                          # Clone of cat(1) with syntax highlighting and Git integration
+brew "croc"                         # Securely send things from one computer to another
+brew "httpie"                       # User-friendly cURL replacement (command-line HTTP client)
+brew "ssh-copy-id"                  # Add a public key to a remote machine's authorized_keys file
+brew "tree"                         # Display directories as trees
+brew "unar"                         # Command-line unarchiving tools supporting multiple formats
+brew "wget"                         # Internet file retriever
+brew "zoxide"                       # Shell extension to navigate your filesystem faster
 
 # search/grep/diff
-brew "fd"
-brew "fzf"
-brew "git-delta"
-brew "gnu-sed"
-brew "grep"
-brew "jq"
-brew "psgrep"
-brew "ripgrep"
-brew "the_silver_searcher"
+brew "fd"                           # Simple, fast and user-friendly alternative to find
+brew "fzf"                          # Command-line fuzzy finder written in Go
+brew "git-delta"                    # Syntax-highlighting pager for git and diff output
+brew "gnu-sed"                      # GNU implementation of the famous stream editor
+brew "grep"                         # GNU grep, egrep and fgrep
+brew "jq"                           # Lightweight and flexible command-line JSON processor
+brew "psgrep"                       # Shortcut for the 'ps aux | grep' idiom
+brew "ripgrep"                      # Search tool like grep and The Silver Searcher
+brew "the_silver_searcher"          # Code-search similar to ack
 
 # languages/tools
-brew "gh"
-brew "n"
-brew "python"
-brew "ruby"
-brew "rust"
-brew "shellcheck"
+brew "gh"                           # GitHub command-line tool
+brew "n"                            # Node version management
+brew "python"                       # Interpreted, interactive, object-oriented programming language
+brew "pyenv"                        # Python version management
+brew "pyenv-virtualenv"             # Pyenv plugin to manage virtualenv
+brew "ruby"                         # Powerful, clean, object-oriented scripting language
+brew "rust"                         # Safe, concurrent, practical language
+brew "shellcheck"                   # Static analysis and lint tool, for (ba)sh scripts
 
 # media
-brew "ffmpeg"
-brew "imagemagick"
-brew "uni"
-brew "webp"
+brew "ffmpeg"                       # Play, record, convert, and stream audio and video
+brew "imagemagick"                  # Tools and libraries to manipulate images in many formats
+brew "uni"                          # Unicode database query tool for the command-line
+brew "webp"                         # Image format providing lossless and lossy compression for web images
 
 # misc
-brew "grip"
+brew "grip"                         # GitHub Markdown previewer

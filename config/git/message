@@ -1,0 +1,41 @@
+
+# <type>(<scope>): <short description>           #
+##################################################
+
+# <body>                                                               #
+########################################################################
+
+# <footer>                                                             #
+########################################################################
+
+########################################################################
+# Based on https://www.conventionalcommits.org/                        #
+
+# <type>:
+#   * feat: A new feature
+#   * fix: A bug fix
+#   * docs: Documentation only changes
+#   * style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+#   * refactor: A code change that neither fixes a bug nor adds a feature
+#   * perf: A code change that improves performance
+#   * test: Adding missing tests or correcting existing tests
+#   * build: Changes that affect the build system or external dependencies (example scopes: webpack, babel, npm)
+#   * ci: Changes to our CI/CD pipelines
+#   * chore: Other changes that don't modify src or test files
+#   * revert: Reverts a previous commit
+
+# <scope>:
+#   * The scope of the change (e.g., component, model, endpoint, utils)
+#   * Optional, but recommended for larger projects.
+
+# <short description>:
+#   * A concise summary of the change (max 50 characters)
+
+# <body>:
+#   * More detailed explanation of the changes made.
+#   * Use the imperative form ("Add", "Change", "Fix")
+#   * Wrap it at 72 characters.
+
+# <footer>:
+#   * Contains any additional information.
+#   * May include references to related issues (e.g., "Closes: #123", "Fixes: #456")

@@ -1,0 +1,90 @@
+{
+    //
+    // Built-in
+    //
+    // Workbench
+    "workbench.colorTheme": "Tokyo Night",
+    // Terminal
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.cursorStyle": "underline",
+    "terminal.integrated.cursorStyleInactive": "block",
+    "terminal.explorerKind": "external",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    // Editor
+    "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, FiraCode Nerd Font Mono",
+    "editor.minimap.enabled": false,
+    "editor.acceptSuggestionOnEnter": "smart",
+    "editor.accessibilitySupport": "off",
+    "editor.guides.bracketPairs": true,
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.formatOnSaveMode": "modificationsIfAvailable",
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        {
+            "column": 80,
+            "color": "#69296950"
+        },
+        {
+            "column": 120,
+            "color": "#692969"
+        },
+    ],
+    // Diff
+    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.experimental.showMoves": true,
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    // Files
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    // File-specific settings
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    // Security
+    "security.promptForLocalFileProtocolHandling": false,
+    //
+    // Extensions
+    //
+    // Git
+    "git.autofetch": true,
+    "git.confirmSync": true,
+    // Github
+    "githubPullRequests.createOnPublishBranch": "never",
+    // ErrorLens
+    "errorLens.enabledDiagnosticLevels": [
+        "error",
+        "warning"
+    ],
+    // CodeSpell
+    "cSpell.enabled": true,
+    "cSpell.checkVSCodeSystemFiles": true,
+    "cSpell.userWords": [
+        "regbank"
+    ],
+    // Rewrap
+    "rewrap.autoWrap.enabled": true,
+    "rewrap.wrappingColumn": 120,
+    // Telemetry
+    "redhat.telemetry.enabled": false,
+    // Python
+    "python.defaultInterpreterPath": "~/.pyenv/shims/python",
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.typeCheckingMode": "basic",
+    // Autopep8
+    "autopep8.args": [
+        "--max-line-length=120"
+    ],
+    // MyPy
+    "mypy-type-checker.reportingScope": "workspace",
+    "mypy-type-checker.showNotifications": "onError",
+    // Makefile
+    "makefile.configureOnOpen": true,
+    //
+    // End-of-manually-ordered-config
+}

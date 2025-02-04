@@ -1,30 +1,43 @@
 # Shortcuts
 
-alias reload="source ~/.bash_profile"
+alias reload="source ~/.${SHELL_NAME}rc"
+
 alias _="sudo"
 alias g="git"
-alias rr="rm -rf"
+alias s="source"
+alias e="echo"
+alias q="exit"
+alias h="history -E"
+alias c="clear"
 
 # Default options
 
 alias rsync="rsync -vh"
 alias json="json -c"
 alias psgrep="psgrep -i"
+alias rr="rm -rf"
+alias duh="du -hd 1 | sort -h"
+alias cat="bat --paging=never --color=never --decorations=never --style=plain"
+alias x="xargs -r " # mind the space at the end to make aliases expand after xargs!
+alias rmf="rm -f"
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
 
 # Global aliases
 
 if $(is-supported "alias -g"); then
-  alias -g G="| grep -i"
-  alias -g H="| head"
-  alias -g T="| tail"
-  alias -g L="| less"
+    alias -g G="| grep -i"
+    alias -g H="| head"
+    alias -g T="| tail"
+    alias -g L="| less"
 fi
 
 # List declared aliases, functions, paths
 
 alias aliases="alias | sed 's/=.*//'"
 alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
-alias paths='echo -e ${PATH//:/\\n}'
+alias paths="echo -e ${PATH//:/\\n}"
 
 # Directory listing/traversal
 
@@ -44,8 +57,10 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias -- -="cd -"                  # Go to previous dir with -
-alias cd.='cd $(readlink -f .)'    # Go to real dir (i.e. if current dir is linked)
+alias -- -="cd -"               # Go to previous dir with -
+alias cd.="cd $(readlink -f .)" # Go to real dir (i.e. if current dir is linked)
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 # p/npm
 
@@ -66,3 +81,19 @@ alias quit="exit"
 alias week="date +%V"
 alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
 alias grip="grip --browser --pass=$GITHUB_TOKEN"
+
+# fzf
+
+alias fzp="fzf -m --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+alias fzd="fzf -m --preview 'git diff --color=always -w {}'"
+
+# Combo meals
+
+# Stage untracked files after content preview
+# g lsu | fzp | x g a
+
+# Stage all tracked files after diff preview
+# g lsm | fzd | x g au
+
+# Search for files to delete after preview
+# fzp | x rm
