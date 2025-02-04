@@ -113,7 +113,7 @@ git: brew
 	brew install git git-extras
 
 python: brew
-	is-executable pyenv || brew install pyenv
+	is-executable pyenv || brew install pyenv || brew install pyenv-virtualenv
 	pyenv install 3
 
 npm: brew-packages

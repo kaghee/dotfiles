@@ -1,9 +1,9 @@
 [user]
-	name = Gergo Gacs
-	email = gacsgergo@gmail.com
+	name = Agnes Kassai
+	email = kass.agnes@gmail.com
 
 [github]
-	user = jstabitunlikely
+	user = kaghee
 
 [core]
 	excludesfile = ~/.config/git/ignore
