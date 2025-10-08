@@ -76,14 +76,14 @@
     rt = restore
     rts = restore --staged
 	ca = commit --amend
-	caf = commit --amend --no-edit
-    ci = commit
-    cim = commit -m
+	cane = commit --amend --no-edit
+    c = commit
+    cm = commit -m
 
 	# Branches
     b = branch
-    cb = checkout -b
-	co = checkout
+    chb = checkout -b
+	ch = checkout
     sw = switch
 
     # Rebase
@@ -94,9 +94,9 @@
 	rh1 = rh HEAD^
 
 	# Remote
-    p = push
-	pf = push --force --force-with-lease
-    pl = pull
+    pu = push
+	puf = push --force --force-with-lease
+    p = pull
 
     # Diff
 	d = diff --unified=0

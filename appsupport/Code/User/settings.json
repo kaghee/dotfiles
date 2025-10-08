@@ -85,6 +85,13 @@
     "mypy-type-checker.showNotifications": "onError",
     // Makefile
     "makefile.configureOnOpen": true,
+    "github.copilot.advanced": {},
+    "editor.tabSize": 2,
+    "editor.language.colorizedBracketPairs": [],
+    "editor.matchBrackets": false,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     //
     // End-of-manually-ordered-config
 }
