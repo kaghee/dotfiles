@@ -94,13 +94,16 @@
 	rh1 = rh HEAD^
 
 	# Remote
+    f = fetch
     pu = push
-	puf = push --force --force-with-lease
+	puf = push --force-with-lease
     p = pull
 
     # Diff
 	d = diff --unified=0
-	dw = d --word-diff
+    dc = d --cached
+	dw = d -w
+	dwd = d --word-diff
 	patch = !git --no-pager diff --no-color
     diffstat = "!f() { if [ $# -eq 0 ]; then git show --shortstat HEAD | tail -1; else git show --shortstat $1 | tail -1; fi; }; f"
 
