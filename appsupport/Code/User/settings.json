@@ -5,7 +5,7 @@
   // Workbench
   "workbench.colorTheme": "Tokyo Night",
   // Terminal
-  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorBlinking": false,
   "terminal.integrated.cursorStyle": "underline",
   "terminal.integrated.cursorStyleInactive": "block",
   "terminal.explorerKind": "external",

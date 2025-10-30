@@ -333,6 +333,9 @@ defaults write com.apple.terminal "Default Window Settings" -string "Pro"
 defaults write com.apple.terminal "Startup Window Settings" -string "Pro"
 defaults write com.apple.Terminal ShowLineMarks -int 0
 
+# Set cursor color to white in Terminal.app
+defaults write com.apple.Terminal "CursorColor" -string "1.000000 1.000000 1.000000"
+
 ###############################################################################
 # Activity Monitor                                                            #
 ###############################################################################

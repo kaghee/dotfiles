@@ -5,7 +5,21 @@
       "Name": "aghee",
       "Rewritable": false,
       "Guid": "a8b1f731-106f-4630-98e3-7c7c1e02e28a",
-      "Window Type": "Normal"
+      "Window Type": "Normal",
+      "Cursor Color": {
+        "Red Component": 1,
+        "Green Component": 1,
+        "Blue Component": 1,
+        "Alpha Component": 1
+      },
+      "Cursor Text Color": {
+        "Red Component": 0,
+        "Green Component": 0,
+        "Blue Component": 0,
+        "Alpha Component": 1
+      },
+      "Cursor Type": 0,
+      "Blinking Cursor": false
     }
   ]
 }
