@@ -56,16 +56,11 @@
   // Github
   "githubPullRequests.createOnPublishBranch": "never",
   // ErrorLens
-  "errorLens.enabledDiagnosticLevels": [
-    "error",
-    "warning"
-  ],
+  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
   // CodeSpell
   "cSpell.enabled": true,
   "cSpell.checkVSCodeSystemFiles": true,
-  "cSpell.userWords": [
-    "regbank"
-  ],
+  "cSpell.userWords": ["regbank"],
   // Rewrap
   "rewrap.autoWrap.enabled": true,
   "rewrap.wrappingColumn": 120,
@@ -76,9 +71,7 @@
   "python.analysis.completeFunctionParens": true,
   "python.analysis.typeCheckingMode": "basic",
   // Autopep8
-  "autopep8.args": [
-    "--max-line-length=120"
-  ],
+  "autopep8.args": ["--max-line-length=120"],
   // MyPy
   "mypy-type-checker.reportingScope": "workspace",
   "mypy-type-checker.showNotifications": "onError",
@@ -87,7 +80,7 @@
   "github.copilot.advanced": {},
   "editor.tabSize": 2,
   "editor.language.colorizedBracketPairs": [],
-  "editor.matchBrackets": false,
+  "editor.matchBrackets": "never",
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -95,6 +88,8 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
   "editor.formatOnSave": true
   //
   // End-of-manually-ordered-config
