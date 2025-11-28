@@ -93,6 +93,7 @@
     ri = rebase --interactive
 	ra = rebase --abort
 	rc = rebase --continue
+    rod = rebase origin/develop
 	rh = reset --hard
 	rh1 = rh HEAD^
     undo = reset --soft HEAD^
