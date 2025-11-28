@@ -87,7 +87,7 @@
     sw = switch
 
     # Commits
-    cp = cherry-pick
+    cpi = cherry-pick
 
     # Rebase
     ri = rebase --interactive
