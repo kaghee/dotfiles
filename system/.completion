@@ -105,7 +105,7 @@ if [[ "${SHELL_NAME}" == zsh ]]; then
         ZSH_AUTOSUGGEST_STRATEGY=(history completion)
         source ${BREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-        source ${BREW_PREFIX}/share/zsh-you-should-use/you-should-use.plugin.zsh
+        # source ${BREW_PREFIX}/share/zsh-you-should-use/you-should-use.plugin.zsh
 
     fi
 
